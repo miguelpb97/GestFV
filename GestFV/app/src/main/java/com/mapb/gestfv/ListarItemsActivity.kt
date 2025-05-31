@@ -393,7 +393,7 @@ class ListarItemsActivity : AppCompatActivity() {
                 true
             }
             id.item_recargar_lista_vehiculos -> {
-                refrescarListaVehiculosUsuario()
+                refrescarListaVehiculosAdmin()
                 true
             }
 
