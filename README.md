@@ -5,4 +5,4 @@
 ## Fecha de entrega: 3er trimestre
 
 
-Descargar la app: [app-debug.apk](https://drive.google.com/file/d/18YQFcb4Rbnez0ujoaxr24c8qTuYJuhJu)
+Descargar la app: [app-debug.apk]([https://drive.google.com/file/d/18YQFcb4Rbnez0ujoaxr24c8qTuYJuhJu](https://drive.google.com/file/d/18YQFcb4Rbnez0ujoaxr24c8qTuYJuhJu/view?usp=sharing))
