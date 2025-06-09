@@ -4,4 +4,5 @@
 ## Curso: DAM SP 2024-2025
 ## Fecha de entrega: 3er trimestre
 
-apk: [app-debug.apk](https://drive.google.com/file/d/18YQFcb4Rbnez0ujoaxr24c8qTuYJuhJu/view?usp=drive_link)
+
+Descargar la app: [app-debug.apk](https://drive.google.com/file/d/18YQFcb4Rbnez0ujoaxr24c8qTuYJuhJu/view?usp=drive_link)
