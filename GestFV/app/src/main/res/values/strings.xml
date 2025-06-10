@@ -120,5 +120,10 @@
     <string name="borrar_cuenta_usuario">Borrar cuenta de usuario:</string>
     <string name="borrar_cuenta">Borrar cuenta</string>
     <string name="recargar_lista">Recargar lista</string>
+    <string name="asunto">Asunto:</string>
+    <string name="mensaje">Mensaje:</string>
+    <string name="enviar">Enviar</string>
+    <string name="obtener_ayuda">Obtener ayuda</string>
+    <string name="obtener_ayuda_texto">Por famos diganos que te sucede para poder ayudarte, nuestros administradores se pondran en contacto lo antes posible para resolver cualquier problema.(tiempo de respuesta medio: 15 minutos)</string>
 
 </resources>

@@ -209,6 +209,62 @@ class ListarItemsActivity : AppCompatActivity() {
                 }
 
             }
+            usuarioAdapterAdmin.onItemClickVerAlquileresUsuario = { usuario ->
+                val intent = Intent(this@ListarItemsActivity, ListarItemsActivity::class.java)
+                var b = Bundle()
+                b.putInt("tipo_accion", accionVerAlquileresUsuario)
+                b.putInt("tipo_usuario", privilegiosAdmin)
+                b.putString("uid_usuario", usuario.uid)
+                intent.putExtra("SHOW_TOOLBAR", false)
+                intent.putExtras(b)
+                startActivity(intent)
+            }
+        }
+
+        //
+        if (tipoAccion == accionVerAlquileresUsuario && tipoUsuario == privilegiosAdmin) {
+            //
+            tvTitulo.text = resources.getString(string.listado_alquileres)
+
+            //
+            alquilerAdapterAdmin = AlquilerAdapterAdmin(listaAlquileres)
+
+            //
+            getAlquileresPorUidUsuario(uidUsuario)
+
+            // Creamos un layout manager y le pasamos por parametro dicha layout al recycleview
+            val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
+            recyclerView.setLayoutManager(layoutManager)
+            recyclerView.setAdapter(alquilerAdapterAdmin)
+
+
+            //
+            alquilerAdapterAdmin.onItemClickBorrarAlquiler = { alquiler ->
+                //
+                val builder = AlertDialog.Builder(this)
+                //
+                builder.setTitle("Borrar alquiler")
+                //
+                builder.setMessage("Estás seguro que desea borrarlo? Esta acción es irreversible.")
+                //
+                builder.setPositiveButton(android.R.string.yes) { dialog, which ->
+                    borrarAlquiler(
+                        alquiler.fechaInicio,
+                        alquiler.fechaFin,
+                        alquiler.matriculaVehiculo
+                    )
+                    listaAlquileres.remove(alquiler)
+                    alquilerAdapterAdmin.notifyDataSetChanged()
+                }
+                //
+                builder.setNegativeButton(android.R.string.no) { dialog, which ->
+                    Toast.makeText(
+                        this, "No se han realizado cambios.", Toast.LENGTH_SHORT
+                    ).show()
+                }
+                //
+                builder.show()
+            }
         }
 
         //
@@ -392,6 +448,7 @@ class ListarItemsActivity : AppCompatActivity() {
                 startActivity(Intent(this@ListarItemsActivity, AgregarVehiculoActivity::class.java))
                 true
             }
+
             id.item_recargar_lista_vehiculos -> {
                 refrescarListaVehiculosAdmin()
                 true
@@ -399,6 +456,29 @@ class ListarItemsActivity : AppCompatActivity() {
 
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun getAlquileresPorUidUsuario(uid: String) = runBlocking {
+        db.collection("alquileres").whereEqualTo("uidUsuario", uid).get()
+            .addOnSuccessListener { result ->
+                Log.d("Listar Alquileres Usuario por UID", "Documentos obtenidos correctamente.")
+                for (document in result) {
+                    listaAlquileres.add(
+                        Alquiler(
+                            document.data["fechaFin"] as Timestamp,
+                            document.data["fechaInicio"] as Timestamp,
+                            document.data["matriculaVehiculo"].toString(),
+                            document.data["metodoPago"].toString(),
+                            document.data["precioTotal"] as Long,
+                            document.data["uidUsuario"].toString()
+                        )
+                    )
+                    alquilerAdapterAdmin.notifyDataSetChanged()
+                }
+            }.addOnFailureListener { exception ->
+                Log.w("Listar Alquileres Usuario por UID", "Error getting documents.", exception)
+            }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -696,19 +776,6 @@ class ListarItemsActivity : AppCompatActivity() {
         b.putInt("tipo_accion", accionVerVehiculosAdmin)
         b.putInt("tipo_usuario", privilegiosAdmin)
         intent.putExtra("SHOW_TOOLBAR", true)
-        intent.putExtras(b)
-        startActivity(intent)
-        finish()
-        delay(1000)
-    }
-
-    fun refrescarListaVehiculosUsuario() = runBlocking {
-        val intent =
-            Intent(this@ListarItemsActivity, ListarItemsActivity::class.java)
-        var b = Bundle()
-        b.putInt("tipo_accion", accionBusquedaVehiculos)
-        b.putInt("tipo_usuario", privilegiosUsuario)
-        intent.putExtra("SHOW_TOOLBAR", false)
         intent.putExtras(b)
         startActivity(intent)
         finish()

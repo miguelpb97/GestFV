@@ -14,6 +14,7 @@ class UsuarioAdapterAdmin(private var dataSet: ArrayList<Usuario>) :
     RecyclerView.Adapter<UsuarioAdapterAdmin.ViewHolder>() {
 
     var onItemClickBorrarUsuario: ((Usuario) -> Unit)? = null
+    var onItemClickVerAlquileresUsuario: ((Usuario) -> Unit)? = null
 
     /**
      * Provide a reference to the type of views that you are using
@@ -33,6 +34,12 @@ class UsuarioAdapterAdmin(private var dataSet: ArrayList<Usuario>) :
             val botonBorrar: Button = view.findViewById(R.id.boton_borrar_usuario_item_admin)
             botonBorrar.setOnClickListener {
                 onItemClickBorrarUsuario?.invoke(dataSet[adapterPosition])
+            }
+        }
+        init {
+            val botonVerAlquileresUsuario: Button = view.findViewById(R.id.boton_ver_alquileres_usuario_item_admin)
+            botonVerAlquileresUsuario.setOnClickListener {
+                onItemClickVerAlquileresUsuario?.invoke(dataSet[adapterPosition])
             }
         }
     }

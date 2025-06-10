@@ -32,6 +32,7 @@ class LoginActivity : ComponentActivity() {
         val botonIniciarSesion: Button = findViewById(R.id.boton_iniciar_sesion)
         val botonRegistrarse: Button = findViewById(R.id.boton_registrate_aqui)
         val botonRestablecerCredenciales: TextView = findViewById(R.id.tv_restablecer_credenciales)
+        val botonObtenerAyuda: TextView = findViewById(R.id.tv_obtener_ayuda)
 
         //
         botonIniciarSesion.setOnClickListener {
@@ -61,6 +62,9 @@ class LoginActivity : ComponentActivity() {
             startActivity(Intent(this@LoginActivity, RestablecerCredencialesActivity::class.java))
         }
 
+        botonObtenerAyuda.setOnClickListener {
+            startActivity(Intent(this@LoginActivity, ObtenerAyudaActivity::class.java))
+        }
     }
 
     public override fun onStart() = run {
