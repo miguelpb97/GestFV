@@ -20,6 +20,7 @@ class VehiculoAdapterAdmin (private val dataSet: ArrayList<Vehiculo>): RecyclerV
     var onItemClickCambiarEstado: ((Vehiculo) -> Unit)? = null
     var onItemClickBorrarVehiculo: ((Vehiculo) -> Unit)? = null
     var onItemClickAgregarRevision: ((Vehiculo) -> Unit)? = null
+    var onItemClickVerHistorialAlquileres: ((Vehiculo) -> Unit)? = null
 
     /**
      * Provide a reference to the type of views that you are using
@@ -58,6 +59,10 @@ class VehiculoAdapterAdmin (private val dataSet: ArrayList<Vehiculo>): RecyclerV
             val botonAgregarRevision: Button = view.findViewById(R.id.boton_agregar_revision_vehiculo_item_admin)
             botonAgregarRevision.setOnClickListener {
                 onItemClickAgregarRevision?.invoke(dataSet[adapterPosition])
+            }
+            val botonVerHistorialAlquileres: Button = view.findViewById(R.id.boton_ver_historial_alquileres_vehiculo_item_admin)
+            botonVerHistorialAlquileres.setOnClickListener {
+                onItemClickVerHistorialAlquileres?.invoke(dataSet[adapterPosition])
             }
         }
     }

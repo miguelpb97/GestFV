@@ -10,14 +10,21 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.SetOptions
+import com.google.firebase.firestore.firestore
+import kotlinx.coroutines.runBlocking
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class GestionarPerfilActivity : ComponentActivity() {
 
+    private val db = Firebase.firestore
     private lateinit var auth: FirebaseAuth
     lateinit var etCorreoCambioPass: EditText
     lateinit var etActualPass: EditText
     lateinit var etNuevaPass: EditText
     lateinit var etRepetirNuevaPass: EditText
+    lateinit var etNuevoTelefono: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +34,9 @@ class GestionarPerfilActivity : ComponentActivity() {
         etActualPass = findViewById(R.id.et_contrasena_actual_usuario)
         etNuevaPass = findViewById(R.id.et_nueva_pass_usuario)
         etRepetirNuevaPass = findViewById(R.id.et_repetir_nueva_pass_usuario)
+        etNuevoTelefono = findViewById(R.id.et_cambio_telefono_usuario)
         val botonCambiarPass: Button = findViewById(R.id.boton_cambiar_pass)
+        val botonCambiarTelefono: Button = findViewById(R.id.boton_cambiar_telefono)
 
         //
         auth = Firebase.auth
@@ -48,6 +57,16 @@ class GestionarPerfilActivity : ComponentActivity() {
             } else {
                 Toast.makeText(
                     this, "Las contraseñas no coinciden.", Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+        botonCambiarTelefono.setOnClickListener {
+            if (validarTelefono(etNuevoTelefono.text.toString())) {
+                editarTelefono(etNuevoTelefono.text.toString())
+            } else {
+                Toast.makeText(
+                    this, "El teléfono tiene que ser válido.", Toast.LENGTH_SHORT
                 ).show()
             }
         }
@@ -103,9 +122,56 @@ class GestionarPerfilActivity : ComponentActivity() {
                         }
                     }.addOnFailureListener {
                         Toast.makeText(
-                            this, "Error al cambiar las credenciales, compruebe que los datos sean correctos.", Toast.LENGTH_LONG
+                            this,
+                            "Error al cambiar las credenciales, compruebe que los datos sean correctos.",
+                            Toast.LENGTH_LONG
                         ).show()
                     }
             }
     }
+
+    private fun editarTelefono(telefonoNuevo: String) = runBlocking {
+        db.collection("usuarios")
+            .whereEqualTo("uid", auth.uid)
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val data = hashMapOf(
+                        "telefono" to telefonoNuevo
+                    )
+                    db.collection("usuarios").document(document.id).set(data, SetOptions.merge())
+                    Log.d("editarTelefono", "Usuario editado.")
+                    Toast.makeText(
+                        baseContext,
+                        "Teléfono editado correctamente.",
+                        Toast.LENGTH_LONG,
+                    ).show()
+                    etNuevoTelefono.text.clear()
+                }
+            }.addOnFailureListener { exception ->
+                Log.w("editarTelefono", "Error al editar.", exception)
+                Toast.makeText(
+                    baseContext,
+                    "Error al editar el teléfono.",
+                    Toast.LENGTH_LONG,
+                ).show()
+            }
+    }
+
+    private fun validarTelefono(campo: String): Boolean {
+        val pattern: Pattern = Pattern.compile("^[6|7]{1}+[0-9]{8}$")
+        val matcher: Matcher = pattern.matcher(campo)
+        val matchFound = matcher.find()
+        if (!campo.isBlank() && matchFound) {
+            return true
+        } else {
+            return false
+            Toast.makeText(
+                baseContext,
+                "Algunos campos no tienen el formato válido.",
+                Toast.LENGTH_SHORT,
+            ).show()
+        }
+    }
+
 }

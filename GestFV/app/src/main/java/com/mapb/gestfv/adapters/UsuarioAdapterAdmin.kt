@@ -15,6 +15,7 @@ class UsuarioAdapterAdmin(private var dataSet: ArrayList<Usuario>) :
 
     var onItemClickBorrarUsuario: ((Usuario) -> Unit)? = null
     var onItemClickVerAlquileresUsuario: ((Usuario) -> Unit)? = null
+    var onItemClickEditarUsuario: ((Usuario) -> Unit)? = null
 
     /**
      * Provide a reference to the type of views that you are using
@@ -40,6 +41,12 @@ class UsuarioAdapterAdmin(private var dataSet: ArrayList<Usuario>) :
             val botonVerAlquileresUsuario: Button = view.findViewById(R.id.boton_ver_alquileres_usuario_item_admin)
             botonVerAlquileresUsuario.setOnClickListener {
                 onItemClickVerAlquileresUsuario?.invoke(dataSet[adapterPosition])
+            }
+        }
+        init {
+            val botonEditarUsuario: Button = view.findViewById(R.id.boton_editar_usuario_item_admin)
+            botonEditarUsuario.setOnClickListener {
+                onItemClickEditarUsuario?.invoke(dataSet[adapterPosition])
             }
         }
     }

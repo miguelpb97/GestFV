@@ -125,7 +125,7 @@ class RegistrarUsuarioActivity : ComponentActivity() {
                 } else {
                     Toast.makeText(
                         baseContext,
-                        "Algunos campos estan vacios.",
+                        "Algunos campos estan vacios o incompletos.",
                         Toast.LENGTH_SHORT,
                     ).show()
                 }

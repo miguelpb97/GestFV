@@ -94,7 +94,6 @@
     <string name="id_revision">ID revisión:</string>
     <string name="borrar_revision">Borrar revisión</string>
     <string name="agregar_vehiculo">Agregar vehículo</string>
-    <string name="agregar_revision_vehiculo">Agregar revisión vehículo</string>
     <string name="lista_revisiones">Lista de revisiones:</string>
     <string name="completar_perfil">Completar perfíl</string>
     <string name="agregar">Agregar</string>
@@ -114,6 +113,7 @@
     <string name="no_disponible">No disponible</string>
     <string name="diesel">Diésel</string>
     <string name="gasolina">Gasolina</string>
+    <string name="email_actual">Email actual:</string>
     <string name="hibrido">Híbrido</string>
     <string name="tipo_combustible">Tipo combustible:</string>
     <string name="busqueda_vehiculos">Busqueda de vehículos</string>
@@ -123,7 +123,16 @@
     <string name="asunto">Asunto:</string>
     <string name="mensaje">Mensaje:</string>
     <string name="enviar">Enviar</string>
+    <string name="editar_usuario">Editar usuario</string>
+    <string name="editar">Editar</string>
     <string name="obtener_ayuda">Obtener ayuda</string>
     <string name="obtener_ayuda_texto">Por famos diganos que te sucede para poder ayudarte, nuestros administradores se pondran en contacto lo antes posible para resolver cualquier problema.(tiempo de respuesta medio: 15 minutos)</string>
+    <string name="cambio_email">Cambio de email:</string>
+    <string name="nuevo_email">Nuevo email:</string>
+    <string name="editar_email">Editar email</string>
+    <string name="cambio_telefono">Cambio de teléfono:</string>
+    <string name="nuevo_telefono">Nuevo telefono:</string>
+    <string name="editar_telefono">Editar teléfono</string>
+    <string name="ver_historial">Ver Historial</string>
 
 </resources>

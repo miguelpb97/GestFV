@@ -58,7 +58,7 @@
                 android:layout_height="58dp"
                 android:drawableStart="@drawable/ic_mail"
                 android:fontFamily="sans-serif"
-                android:hint="@string/email"
+                android:hint="@string/email_actual"
                 android:inputType="text"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
@@ -82,7 +82,7 @@
                 android:id="@+id/et_contrasena_actual_usuario"
                 android:layout_width="match_parent"
                 android:layout_height="58dp"
-                android:drawableStart="@drawable/ic_lock"
+                android:drawableStart="@drawable/ic_lock_open"
                 android:fontFamily="sans-serif"
                 android:hint="@string/contrasena_actual"
                 android:inputType="textPassword"
@@ -156,6 +156,64 @@
             android:drawableTint="@color/white"
             android:fontFamily="sans-serif"
             android:text="@string/cambiar_contrasena"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:backgroundTint="@color/color_app" />
+
+        <TextView
+            android:id="@+id/tv_titulo_cambio_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/boton_cambiar_pass"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/cambio_telefono"
+            android:textColor="@color/texto"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tv_cambio_telefono_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_titulo_cambio_telefono"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="sans-serif"
+            app:boxStrokeColor="@color/color_app"
+            app:hintEnabled="false">
+
+            <EditText
+                android:id="@+id/et_cambio_telefono_usuario"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:drawableStart="@drawable/ic_phone"
+                android:fontFamily="sans-serif"
+                android:hint="@string/nuevo_telefono"
+                android:inputType="text"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textAlignment="center" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/boton_cambiar_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_cambio_telefono_usuario"
+            android:layout_marginStart="84dp"
+            android:layout_marginEnd="84dp"
+            android:layout_marginBottom="32dp"
+            android:drawableLeft="@drawable/ic_edit"
+            android:drawableTint="@color/white"
+            android:fontFamily="sans-serif"
+            android:text="@string/editar_telefono"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="@color/white"
