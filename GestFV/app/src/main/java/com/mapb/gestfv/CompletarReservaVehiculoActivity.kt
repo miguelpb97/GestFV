@@ -2,6 +2,7 @@ package com.mapb.gestfv
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -16,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.mapb.gestfv.modelo.Alquiler
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
 import java.text.SimpleDateFormat
 import java.time.Instant
@@ -99,10 +101,6 @@ class CompletarReservaVehiculoActivity : ComponentActivity() {
             //
             builder.setPositiveButton(android.R.string.yes) { dialog, which ->
                 alquilarVehiculo(Date(fechaFin), Date(fechaInicio), matriculaVehiculo, "Efectivo", precioTotal, auth.uid.toString() )
-                Toast.makeText(
-                    this, "Reserva realizada correctamente. Puede consultar los datos del alquiler en el menu Ver alquileres", Toast.LENGTH_LONG
-                ).show()
-                finish()
             }
             //
             builder.setNegativeButton(android.R.string.no) { dialog, which ->
@@ -128,7 +126,7 @@ class CompletarReservaVehiculoActivity : ComponentActivity() {
         metodoPago: String,
         precioTotal: Long,
         uidUsuario: String
-    ) = runBlocking {
+    ) = run {
         //
         val datos = Alquiler(
             Timestamp(fechaFin),
@@ -144,6 +142,16 @@ class CompletarReservaVehiculoActivity : ComponentActivity() {
                 "Reservar Vehiculo",
                 "Alquiler creado con exito. ID del alquiler: ${documentReference.id}"
             )
+            val intent =
+                Intent(this@CompletarReservaVehiculoActivity, ConfirmacionReservaVehiculoActivity::class.java)
+            var b = Bundle()
+            b.putLong("precio_total", precioTotal)
+            b.putString("id_alquiler", documentReference.id)
+            b.putLong("fecha_inicio", fechaInicio.time)
+            b.putLong("fecha_fin", fechaFin.time)
+            intent.putExtras(b)
+            startActivity(intent)
+            finish()
         }.addOnFailureListener { e ->
             Log.w("Reservar Vehiculo", "Error al crear el alquiler", e)
         }

@@ -44,19 +44,19 @@
     <string name="efectivo">Efectivo</string>
     <string name="metodo_pago">Método de pago:</string>
     <string name="anio">Año:</string>
-    <string name="matricula_vehiculo">Matricula vehiculo:</string>
+    <string name="matricula_vehiculo">Matricula vehículo:</string>
     <string name="uid_usuario">UID usuario:</string>
     <string name="uid">UID:</string>
     <string name="precio_total">Precio total:</string>
     <string name="actualizar_datos_usuario">Actualizar datos de usuario</string>
     <string name="contrasena_actual">Contraseña actual:</string>
     <string name="contrasena_nueva">Nueva contraseña:</string>
-    <string name="ver_vehiculo">Ver vehiculo</string>
+    <string name="ver_vehiculo">Ver vehículo</string>
     <string name="cambiar_datos_usuario">Cambiar datos del usuario:</string>
     <string name="estado_alquiler">Estado del alquiler:</string>
-    <string name="estado_vehiculo">Estado del vehiculo:</string>
+    <string name="estado_vehiculo">Estado del vehículo:</string>
     <string name="cv">cv</string>
-    <string name="gestionar_vehiculos">Gestionar vehiculos</string>
+    <string name="gestionar_vehiculos">Gestionar vehículos</string>
     <string name="gestionar_alquileres">Gestionar alquileres</string>
     <string name="gestionar_usuarios">Gestionar usuarios</string>
     <string name="recordar_credenciales">Recordar inicio de sesión</string>
@@ -106,7 +106,7 @@
     <string name="siguiente_revision">Siguente revisión:</string>
     <string name="agregar_revision">Agregar revisión</string>
     <string name="elegir_fecha">Elige las fechas de inicio y fin de alquiler:</string>
-    <string name="vehiculos_disponibles">Vehiculos disponibles:</string>
+    <string name="vehiculos_disponibles">Vehículos disponibles:</string>
     <string name="iniciar_busqueda">Iniciar búsqueda</string>
     <string name="url_imagen">URL Imágen:</string>
     <string name="disponible">Disponible</string>
@@ -126,13 +126,17 @@
     <string name="editar_usuario">Editar usuario</string>
     <string name="editar">Editar</string>
     <string name="obtener_ayuda">Obtener ayuda</string>
-    <string name="obtener_ayuda_texto">Por famos diganos que te sucede para poder ayudarte, nuestros administradores se pondran en contacto lo antes posible para resolver cualquier problema.(tiempo de respuesta medio: 15 minutos)</string>
+    <string name="obtener_ayuda_texto">Por favor diganos que te sucede para poder ayudarte, nuestros administradores se pondrán en contacto lo ántes posible para resolver cualquier problema. (Tiempo de respuesta medio: 15 minutos)</string>
     <string name="cambio_email">Cambio de email:</string>
     <string name="nuevo_email">Nuevo email:</string>
     <string name="editar_email">Editar email</string>
     <string name="cambio_telefono">Cambio de teléfono:</string>
-    <string name="nuevo_telefono">Nuevo telefono:</string>
+    <string name="nuevo_telefono">Nuevo teléfono:</string>
     <string name="editar_telefono">Editar teléfono</string>
     <string name="ver_historial">Ver Historial</string>
+    <string name="volver_menu">Volver al menú principal</string>
+    <string name="reserva_realizada">Reserva realizada con éxito.</string>
+    <string name="confirmacion_reserva">Confirmación de reserva</string>
+    <string name="mensaje_confirmacion_alquiler">Puede pasar a recoger el vehículo a partir de la fecha de inicio indicada.</string>
 
 </resources>

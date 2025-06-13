@@ -109,9 +109,7 @@ class BuscarVehiculosActivity : ComponentActivity() {
                 b.putLong("fecha_fin", dateFechaFin.time)
                 intent.putExtras(b)
                 startActivity(intent)
-                //
-                etFechaInicio.text.clear()
-                etFechaFin.text.clear()
+                finish()
             } else
                 Toast.makeText(
                     baseContext,

@@ -30,6 +30,7 @@ class AlquilerAdapterAdmin(private var dataSet: ArrayList<Alquiler>) :
 
     private val db = Firebase.firestore
     var onItemClickBorrarAlquiler: ((Alquiler) -> Unit)? = null
+    var onItemClickVerUsuarioAlquiler: ((Alquiler) -> Unit)? = null
 
     /**
      * Provide a reference to the type of views that you are using
@@ -57,6 +58,11 @@ class AlquilerAdapterAdmin(private var dataSet: ArrayList<Alquiler>) :
                 view.findViewById(R.id.boton_borrar_alquiler_item_admin)
             botonEliminarAlquiler.setOnClickListener {
                 onItemClickBorrarAlquiler?.invoke(dataSet[adapterPosition])
+            }
+            var botonVerUsuarioAlquiler: Button =
+                view.findViewById(R.id.boton_ver_usuario_alquiler_item_admin)
+            botonVerUsuarioAlquiler.setOnClickListener {
+                onItemClickVerUsuarioAlquiler?.invoke(dataSet[adapterPosition])
             }
         }
 
