@@ -1,5 +1,7 @@
-# Proyecto Final: Formacion Profesional Desarollo de Aplicaciones Multiplataforma
-Proyecto: GestFV
+# Proyecto Final Formacion Profesional Desarollo de Aplicaciones Multiplataforma : GestFV
+
+App Android para gestión de flota de vehículos de alquiler
+
 Tecnologías: Java, Kotlin, MongoDB
 
 Características:
