@@ -2,7 +2,9 @@
 
 App Android para gestión de flota de vehículos de alquiler
 
-Tecnologías: Java, Kotlin, MongoDB
+Tecnologías: 
+ - Java
+ - Kotlin
 
 Características:
 - REST API
